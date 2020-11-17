@@ -1,11 +1,10 @@
 <div class="container">
     <div class="row mt-4">
       <div class="col-12">
-        <h1 class="text-center">Job Hunt</h1>
-        <p class="text-center">Enter a keyword in the field below</p>
+        <h1 class="text-center">Job Search</h1>
         <%= form_tag '/search' do %>
           <div class="form-group">
-            <%= text_field_tag :query, nil, {class: "form-control"} %>
+            <%= text_field_tag :query, nil, {class: "form-control", placeholder: "Enter a keyword"} %>
           </div>          
           <%= submit_tag "Search", {class: "btn btn-primary mx-auto d-block", id: "search", role: "status"} %>
           <div id="button">
