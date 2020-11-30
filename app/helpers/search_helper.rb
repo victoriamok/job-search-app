@@ -1,6 +1,6 @@
 module SearchHelper
   
   def job_count
-    @results.count
+    @jobs.count
   end
 end

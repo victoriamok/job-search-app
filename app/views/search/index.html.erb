@@ -1,48 +1,45 @@
+<!-- <pre><%= JSON.pretty_generate(@jobs) %></pre> -->
+
 <div class="container">
   <div class="row mt-4">
     <div class="col-12">
-		
-	  <% if @results.count == 1 %>
-	    <p class="text-pull-left mb-4"> <%= job_count %> <%= @query %> job found</p>
-	  <% else %>
-		<p class="text-pull-left mb-4"> <%= job_count %> <%= @query %> jobs found</p>
-	  <% end %>
-	  
+	    <% if @jobs.count == 1 %>
+	      <p class="text-pull-left mb-4"> <%= job_count %> <%= params[:query] %> job found</p>
+	    <% else %>
+		  <p class="text-pull-left mb-4"> <%= job_count %> <%= params[:query] %> jobs found</p>
+		<% end %>
 	  <table class="table">
 		<tbody>
-		  <% @results.each do |job| %>
+		  <% @jobs.each do |job| %>
 			<tr>
-			  
+
 			  <td class="text-pull-left">
 			    <div class="img-thumbnail">
 				  <% image_tag job["company_logo"] if job["company_logo"].present? %><br/>
 				</div>
 			  </td>
-			  
+
 			  <td class="text-pull-left">
 			    <%= link_to job["title"] %><br/>
 				<%= job["company"] %><br/>
-	  	        
+
 				<span class="text-muted">
 				  <%= job["location"] %>
 			    </span><br/>
-				
+
 				<span class="text-muted">
 				  <%= job["type"] %>
 				</span><br/>
-				
+
 				<span class="text-muted">
 			      <p class="font-italic"> Posted <%= job["created_at"] %></p>
 				</span><br/>
 	  	       </td>
-							<!-- <td class="text-center">
-								<%= job["description"] %>
-							</td> -->
 	  	     </tr>
 		   <% end %>
 	  	 </tbody>
        </table>
-	   <% if (@results.nil? or @results == []) %>
+	   <% if (@jobs.nil? or @jobs == []) %>
 	     <p><h2>No jobs found...</h2></p>
 	   <% end %>
 	 </div>

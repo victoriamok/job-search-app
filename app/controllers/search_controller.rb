@@ -17,11 +17,12 @@ class SearchController < ApplicationController
   end
   
   def index
-    # TODO
-    # RequestWorker.perform_async(request)
+  #   RequestWorker.perform_async(params[:query])
+  #   Rails.logger.info(@jobs.to_json)
+  
     begin
       response = Request.new(params[:query]).call.read_body
-      @results = ActiveSupport::JSON.decode(response)
+      @jobs = ActiveSupport::JSON.decode(response)
     rescue ActiveSupport::JSON.parse_error
       Rails.logger.warn("Attempted to decode invalid JSON: #{response}")
     end
